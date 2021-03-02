@@ -1,12 +1,14 @@
 #include <fstream>
 #include <string>
-
+#include <vector>
 
 class CTJ
 {
     private:
         std::fstream internal_file;
+        std::vector<std::string> rows;
         bool checkFileExtension(std::string &);
+        void saveFileContents();
     public:
         //===================================+=//
         //  Input: Takes string of file path
