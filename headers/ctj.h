@@ -19,4 +19,5 @@ class CTJ
         //      1 on success
         //===================================+=//
         int exportJSON();               // converts the source csv file to json and saves new file as "json_export.json"
+        ~CTJ();
 };
