@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "headers/ctj.h"
+#include "headers/badExtension.h"
 
 int main(int argc, char** argv)
 {
@@ -12,12 +13,19 @@ int main(int argc, char** argv)
     //     getline(myFile, line, ',');
     //     std::cout << line << std::endl;
     // }
-    std::string srcPath(argv[1]);
-    CTJ client;
-    if(client.setSourceFile(srcPath))
-    {
-        std::cout << "Test 1 Successful" << std::endl;
+    try{
+        std::string srcPath(argv[1]);
+        CTJ client;
+        if(client.setSourceFile(srcPath))
+        {
+            std::cout << "Test 1 Successful" << std::endl;
+        }
     }
+    catch (badExtension ex)
+    {
+        std::cerr << ex.what() << std::endl;
+    }
+
 
     return 0;
 }
