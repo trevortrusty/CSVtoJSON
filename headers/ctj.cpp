@@ -28,7 +28,7 @@ int CTJ::setSourceFile(std::string &filePath)
     }
     try
     {
-        internal_file.open(filePath);
+        csv_file.open(filePath);
         saveFileContents();
         return 1;
     }
@@ -40,9 +40,9 @@ int CTJ::setSourceFile(std::string &filePath)
 
 void CTJ::saveFileContents()
 {
-    while(internal_file.good()) {
+    while(csv_file.good()) {
         std::string line;
-        getline(internal_file, line, ',');
+        getline(csv_file, line, ',');
         std::cout << line << std::endl; // for debugging
         rows.push_back(line);
     }
@@ -50,11 +50,19 @@ void CTJ::saveFileContents()
 
 int CTJ::exportJSON()
 {
+    json_file.open("dest.json", std::ios::in | std::ios::out | std::ios::app);
+    json_file << "[\n";
+
+    
+
+    json_file << "]";
     return 1;
 }
 
 CTJ::~CTJ()
 {
-    internal_file.close();
+    csv_file.close();
     std::cout << "source file closed" << std::endl;
+    json_file.close();
+    std::cout << "destination file closed" << std::endl;
 }

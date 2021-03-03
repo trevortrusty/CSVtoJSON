@@ -5,8 +5,10 @@
 class CTJ
 {
     private:
-        std::fstream internal_file;
-        std::vector<std::string> rows;
+        std::fstream csv_file;
+        std::ofstream json_file;
+        std::vector<std::string> rows; // rows of csv data
+        std::vector<std::string> keyNames; // column/key names from csv file
         bool checkFileExtension(std::string &);
         void saveFileContents();
     public:

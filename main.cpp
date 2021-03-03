@@ -19,6 +19,7 @@ int main(int argc, char** argv)
         if(client.setSourceFile(srcPath))
         {
             std::cout << "Test 1 Successful" << std::endl;
+            client.exportJSON();
         }
     }
     catch (badExtension ex)
