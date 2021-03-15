@@ -6,6 +6,15 @@
 #include <exception>
 #include <vector>
 
+// bool endsWithReturn(std::string arg)
+// {
+//     for(char : arg)
+//     {
+
+//     }
+// }
+
+
 bool CTJ::checkFileExtension(std::string &filePath)
 {
     int len = filePath.size() - 1; // store size of filepath
@@ -40,22 +49,81 @@ int CTJ::setSourceFile(std::string &filePath)
 
 void CTJ::saveFileContents()
 {
+    
     while(csv_file.good()) {
-        std::string line;
-        getline(csv_file, line, ',');
-        std::cout << line << std::endl; // for debugging
+        std::vector<std::string> line;
+        std::string cell;
+
+        /*
+
+        do{
+            std::getline(csv_file, cell, ',');
+            line.push_back(cell);
+            std::cout << cell;
+            //std::cin.get();
+        } while(cell.at(cell.size() - 1) != '\n' && !csv_file.eof());
+
+        */
+
+        for(int i = 0; i < columns; i++)
+        {
+            std::getline(csv_file, cell, ',');
+            line.push_back(cell);
+            std::cout << cell << ' ';
+        }
+
+        //std::string line;
+        //getline(csv_file, line, ',');
+        //std::cout << "line: " << line << std::endl; // for debugging
         rows.push_back(line);
+        // for(std::string c : line)
+        // {
+        //     std::cout << c << ',';
+        // }
+        //std::cout << std::endl;
+        std::cout << "**" << std::endl;
     }
+    for(std::string key: rows[0])
+    {
+        keyNames.push_back(key);
+    }
+    //columnNumber = rows[0].size();
+    std::cout << columns << std::endl;
+    //rows.erase(rows.begin()); // Remove first row from vector because it just contains the column names
 }
 
 int CTJ::exportJSON()
 {
     json_file.open("dest.json", std::ios::in | std::ios::out | std::ios::app);
-    json_file << "[\n";
 
+    // int columnCount = 1;
+    // for(int i = 0; i < rows[0].size(), i++)
+    // {
+    //     if(row[0].at(i) == ',')
+    //     {
+    //         columnCount++;
+    //     }
+    // }
+
+    json_file << "[\n";
     
+    for(int i = 0; i < rows.size(); i++)
+    {
+        json_file << "\t{\n";
+        for(int j = 0; j < columns; j++)
+        {
+            json_file << "\t\t\"" << keyNames[j] << "\": " << '\"' << (rows[i])[j] << "\",\n";
+        }
+        json_file << "\t},\n";
+    }
 
     json_file << "]";
+    return 1;
+}
+
+int CTJ::setColumnNumber(int &arg)
+{
+    columns = arg;
     return 1;
 }
 

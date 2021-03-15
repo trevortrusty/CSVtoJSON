@@ -7,8 +7,9 @@ class CTJ
     private:
         std::fstream csv_file;
         std::ofstream json_file;
-        std::vector<std::string> rows; // rows of csv data
+        std::vector<std::vector<std::string>> rows; // rows of csv data
         std::vector<std::string> keyNames; // column/key names from csv file
+        int columns;
         bool checkFileExtension(std::string &);
         void saveFileContents();
     public:
@@ -24,5 +25,8 @@ class CTJ
         //      1 on success
         //===================================+=//
         int exportJSON();               // converts the source csv file to json and saves new file as "json_export.json"
+
+        // Setter function for column number
+        int setColumnNumber(int &arg);
         ~CTJ();
 };
