@@ -2,25 +2,16 @@
 	{
 		"name": "name",
 		"email": "email",
-		"[
-	{
-		"name": "name",
-		"email": "email",
-		"accepted
-joe": "accepted
-joe",
+		"accepted": "accepted"
 	},
 	{
-		"name": "joe@gmail.com",
-		"email": "yes
-trevor",
-		"accepted
-joe": "email@email.com",
+		"name": "joe",
+		"email": "joe@gmail.com",
+		"accepted": "yes"
 	},
 	{
-		"name": "no",
-		"email": "no",
-		"accepted
-joe": "no",
-	},
+		"name": "trevor",
+		"email": "email@email.com",
+		"accepted": "no"
+	}
 ]

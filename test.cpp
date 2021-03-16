@@ -3,9 +3,8 @@
 
 int main()
 {
-    std::string str = "hello\n";
-    bool test = str[5] == '\n';
-    std::cout << test;
-    //std::cout << str.find("\n");
+    char a = 'a';
+    std::string s = std::string(1, a);
+    std::cout << s << std::endl;
     return 0;
 }
